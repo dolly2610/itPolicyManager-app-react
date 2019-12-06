@@ -17,6 +17,7 @@
 
 */
 import React from "react";
+import Axios from "axios";
 
 // reactstrap components
 import {
@@ -33,7 +34,49 @@ import {
   CardTitle,
 } from "reactstrap";
 
+
+
 class Policies extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onChangeInput = this.onChangeInput.bind(this);
+    this.onAddKeyContactClick = this.onAddKeyContactClick.bind(this);
+    this.state = {
+      fname: '',
+      lname: '',
+      email: '',
+      position: '',
+      userId: localStorage.getItem('session_id')
+
+    }
+}
+  
+  onChangeInput(e) {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    
+    this.setState({
+      [name]: value
+      
+    });
+  }
+  
+  onAddKeyContactClick(e) {
+    e.preventDefault();
+    console.log("add key contact clicked!");
+    const addKeyContactDetails = {
+      fname: this.state.fname,
+      lname: this.state.lname,
+      email: this.state.email,
+      position: this.state.position,
+      userId: this.state.userId
+    };
+    
+    Axios.post('http://localhost:5000/addKeyContact',addKeyContactDetails)
+    .then(res => {console.log(res.data)});
+  }
+
   render() {
     return (
       <>
@@ -55,7 +98,8 @@ class Policies extends React.Component {
                       <Row>
                       <InputGroup className="form-group-no-border">
                          <Col className="car-register-nzbn" lg="12">
-                           <Input placeholder="First Name" type="text" />
+                           <Input placeholder="First Name" type="text" name="fname" 
+                                   onChange={this.onChangeInput}/>
                         </Col>
                       </InputGroup>
                       </Row>
@@ -68,7 +112,8 @@ class Policies extends React.Component {
                       <Row>
                         <InputGroup className="form-group-no-border">
                           <Col className="car-register-nzbn" lg="12">
-                            <Input placeholder="Last Name" type="text" />
+                            <Input placeholder="Last Name" type="text" name="lname"
+                                   onChange={this.onChangeInput}/>
                           </Col>
                         </InputGroup>
                       </Row>
@@ -81,7 +126,8 @@ class Policies extends React.Component {
                       <Row>
                        <InputGroup className="form-group-no-border">
                         <Col className="car-register-nzbn" lg="12">
-                          <Input placeholder="Email@email.com" type="text" />
+                          <Input placeholder="Email@email.com" type="text" name="email"
+                                   onChange={this.onChangeInput} />
                         </Col>
                       </InputGroup>
                       </Row>
@@ -94,7 +140,8 @@ class Policies extends React.Component {
                       <Row>
                       <InputGroup className="form-group-no-border">
                        <Col className="car-register-nzbn" lg="12">
-                        <Input placeholder="Position" type="text" />
+                        <Input placeholder="Position" type="text" name="position"
+                                   onChange={this.onChangeInput} />
                        </Col> 
                       </InputGroup>
                       </Row>
@@ -105,7 +152,8 @@ class Policies extends React.Component {
                         style={{'margin-right':'20px'}}
                         color="success"
                         href="#"
-                        onClick={e => e.preventDefault()}
+                        type="button"
+                        onClick={this.onAddKeyContactClick}
                     >
                         Submit
                     </Button>
