@@ -94,7 +94,7 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/contactus-page" tag={Link}>
+              <NavLink to="/contact-us" tag={Link}>
                 <i className="nc-icon nc-mobile" /> Contact Us
               </NavLink>
             </NavItem>

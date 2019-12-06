@@ -30,10 +30,10 @@ import { Button,
         Col } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
-function ContactUsPage() {
+function ContactUs() {
     document.documentElement.classList.remove("nav-open");
     React.useEffect(() => {
       document.body.classList.add("register-page");
@@ -43,9 +43,9 @@ function ContactUsPage() {
 });
   return (
     <>
-      <ExamplesNavbar />
+      <IndexNavbar />
       <div style={{
-          backgroundColor: "rgb(112, 62, 184, .5)",
+          backgroundColor: "rgb(85, 85,85)",
           color: "white"
         }}
         className="section landing-section"
@@ -53,7 +53,7 @@ function ContactUsPage() {
         <Container>
         <Row>
             <Col className="ml-auto mr-auto" md="8">
-            <h2 className="text-center">Get in touch?</h2>
+            <h2 className="text-center">Contact Us </h2>
             <Form className="contact-form">
                 <Row>
                 <Col md="6">
@@ -78,16 +78,32 @@ function ContactUsPage() {
                     <Input placeholder="Email" type="text" />
                     </InputGroup>
                 </Col>
-                </Row>
+                
+                </Row> <br/>
+               <Row>
+                <Col md="12">
+                <label> Enter Contact </label> 
+                    <InputGroup>
+                   
+                    <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                        <i className="nc-icon nc-mobile" />
+                        </InputGroupText>
+                    </InputGroupAddon>
+                    <Input placeholder="Contact No " type="Number" />
+                    </InputGroup>
+                </Col>
+                </Row> <br/>
+
                 <label>Message</label>
                 <Input
-                placeholder="Type in your queries to us..."
+                placeholder="Enter Message "
                 type="textarea"
-                rows="4"
+                rows="7"
                 />
                 <Row>
-                <Col className="ml-auto mr-auto" md="4">
-                    <Button className="btn-fill" color="success" size="lg">
+                <Col className="ml-auto mr-auto" md="12">
+                    <Button className="btn-fill" color="primary" size="lg">
                     Send Message
                     </Button>
                 </Col>
@@ -102,7 +118,7 @@ function ContactUsPage() {
   );
 }
 
-export default ContactUsPage;
+export default ContactUs;
 
 
 

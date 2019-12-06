@@ -31,11 +31,12 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // pages
 import LandingPage from "views/LandingPage.js";
 import ProfilePage from "views/landingSubPage/ProfilePage.js";
-import ContactUsPage from "views/landingSubPage/ContactUsPage.js";
+// import ContactUsPage from "views/landingSubPage/ContactUsPage.js";
 import SurveyPage from "views/landingSubPage/SurveyPage.js";
 import SignIn from "views/landingSubPage/SignIn.js";
 import Modal from "views/landingSubPage/RegModal.js";
 import Dashboard from "views/Dashboard.jsx";
+import ContactUs from "views/landingSubPage/ContactUs"
 // others
 
 ReactDOM.render(
@@ -56,14 +57,18 @@ ReactDOM.render(
         path="/register-modal"
         render={props => <Modal {...props} />}
       />
-      <Route
+      {/* <Route
         path="/contactus-page"
         render={props => <ContactUsPage {...props} />}
-      />
+      /> */}
       <Route
         path="/survey-page"
         render={props => <SurveyPage {...props} />}
       />
+      <Route
+         path="/contact-us"
+         render={props => <ContactUs {...props} />}
+        />}
       <Route
         path="/dashboard"
         render={props => <Dashboard {...props} />}
@@ -72,4 +77,5 @@ ReactDOM.render(
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
+
 );
